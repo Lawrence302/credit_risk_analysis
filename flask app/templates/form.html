@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Data Collection Form</h1>
+        <form id="dataForm" action="/submit" method="post">
+            <div class="mb-3">
+                <label for="Percent_income" class="form-label">Percent Income:</label>
+                <input type="text" id="Percent_income" name="Percent_income" class="form-control" required>
+                <div class="invalid-feedback">Please enter a valid percent income.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="Default" class="form-label">Default:</label>
+                <select id="Default" name="Default" class="form-select" required>
+                    <option value="" disabled selected>Select Default</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="Cred_length" class="form-label">Credit Length:</label>
+                <input type="text" id="Cred_length" name="Cred_length" class="form-control" required>
+                <div class="invalid-feedback">Please enter a valid credit length.</div>
+            </div>
+
+            <fieldset class="mb-3">
+                <legend class="form-label">Intent:</legend>
+                <div class="form-check">
+                    <input type="radio" id="Intent_DEBTCONSOLIDATION" name="Intent" value="DEBTCONSOLIDATION" class="form-check-input">
+                    <label for="Intent_DEBTCONSOLIDATION" class="form-check-label">Debt Consolidation</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Intent_EDUCATION" name="Intent" value="EDUCATION" class="form-check-input">
+                    <label for="Intent_EDUCATION" class="form-check-label">Education</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Intent_HOMEIMPROVEMENT" name="Intent" value="HOMEIMPROVEMENT" class="form-check-input">
+                    <label for="Intent_HOMEIMPROVEMENT" class="form-check-label">Home Improvement</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Intent_MEDICAL" name="Intent" value="MEDICAL" class="form-check-input">
+                    <label for="Intent_MEDICAL" class="form-check-label">Medical</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Intent_PERSONAL" name="Intent" value="PERSONAL" class="form-check-input">
+                    <label for="Intent_PERSONAL" class="form-check-label">Personal</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Intent_VENTURE" name="Intent" value="VENTURE" class="form-check-input">
+                    <label for="Intent_VENTURE" class="form-check-label">Venture</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <legend class="form-label">Home:</legend>
+                <div class="form-check">
+                    <input type="radio" id="Home_MORTGAGE" name="Home" value="MORTGAGE" class="form-check-input" required>
+                    <label for="Home_MORTGAGE" class="form-check-label">Mortgage</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Home_OTHER" name="Home" value="OTHER" class="form-check-input">
+                    <label for="Home_OTHER" class="form-check-label">Other</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Home_OWN" name="Home" value="OWN" class="form-check-input">
+                    <label for="Home_OWN" class="form-check-label">Own</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="Home_RENT" name="Home" value="RENT" class="form-check-input">
+                    <label for="Home_RENT" class="form-check-label">Rent</label>
+                </div>
+            </fieldset>
+
+            <div class="mb-3">
+                <label for="Rate" class="form-label">Rate:</label>
+                <input type="text" id="Rate" name="Rate" class="form-control" required>
+                <div class="invalid-feedback">Please enter a valid rate.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <p id="formError" class="error"></p>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional but recommended for interactive components) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            let isValid = true;
+            let errorMsg = '';
+
+            // Get form values
+            const percentIncome = document.getElementById('Percent_income').value;
+            const credLength = document.getElementById('Cred_length').value;
+            const rate = document.getElementById('Rate').value;
+
+            // Validate Percent Income
+            if (!isValidNumber(percentIncome)) {
+                isValid = false;
+                errorMsg += 'Percent Income must be a valid number.<br>';
+            }
+
+            // Validate Credit Length
+            if (!isValidNumber(credLength)) {
+                isValid = false;
+                errorMsg += 'Credit Length must be a valid number.<br>';
+            }
+
+            // Validate Rate
+            if (!isValidNumber(rate)) {
+                isValid = false;
+                errorMsg += 'Rate must be a valid number.<br>';
+            }
+
+            // Validate that at least one Intent is selected
+            if (!document.querySelector('input[name="Intent"]:checked')) {
+                isValid = false;
+                errorMsg += 'Please select an Intent.<br>';
+            }
+
+            // Validate that at least one Home is selected
+            if (!document.querySelector('input[name="Home"]:checked')) {
+                isValid = false;
+                errorMsg += 'Please select a Home option.<br>';
+            }
+
+            // Display errors and prevent form submission if invalid
+            if (!isValid) {
+                event.preventDefault();
+                document.getElementById('formError').innerHTML = errorMsg;
+            }
+        });
+
+        function isValidNumber(value) {
+            return /^-?\d+(\.\d+)?$/.test(value);
+        }
+    </script>
+</body>
+</html>
