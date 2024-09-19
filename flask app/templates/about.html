@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block head %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+{% endblock %}
+{% block title %}About Loan Risk Analysis App{% endblock %}
+{% block content %}
+<main class="about-container">
+    <h1>About Loan Risk Analysis App</h1>
+    <section class="app-overview">
+        <h2>Overview</h2>
+        <p>
+            The Loan Risk Analysis App is designed to help users evaluate the risk associated with granting loans based on various financial parameters.
+            By inputting details such as income percentage, credit length, and loan purpose, the app utilizes machine learning algorithms to predict whether the loan application poses a high or low risk.
+        </p>
+    </section>
+
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <ol>
+            <li>Users fill out a form with their financial information.</li>
+            <li>The app processes the input data and generates a risk prediction.</li>
+            <li>Users receive a detailed analysis, including the probability of risk and insights into their loan application.</li>
+        </ol>
+    </section>
+
+    <section class="technologies">
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>Flask:</strong> A micro web framework for Python, used to build the application.</li>
+            <li><strong>Scikit-learn:</strong> A machine learning library for Python, used to train the predictive model.</li>
+            <li><strong>Pandas:</strong> A library for data manipulation and analysis, used for handling input data.</li>
+            <li><strong>HTML/CSS:</strong> For structuring and styling the web application.</li>
+        </ul>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>
+            For any inquiries or feedback regarding the Loan Risk Analysis App, please reach out to us at: 
+            <a href="mailto:ganjer700@gmail.com">our mail</a>
+        </p>
+    </section>
+</main>
+{% endblock %}

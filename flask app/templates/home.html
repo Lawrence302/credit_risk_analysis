@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hoeme page</h1>
-</body>
-</html>
+
+{% extends 'base.html' %}
+{% block title %}Loan Risk Analysis App{% endblock %}
+
+<!-- {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %} -->
+{% block content %}
+   
+
+    <main>
+        <section class="hero">
+            <h2>Assess Your Loan Risk</h2>
+            <p>Understand your credit risk profile and make informed financial decisions.</p>
+            <a href="/form" class="cta-button">Get Started</a>
+        </section>
+
+        <section class="features_section">
+                <h2>Features</h2> 
+            <div class="features">
+                <div class="feature-item">
+                    <h3>Quick Assessment</h3>
+                    <p>Enter your details to receive an immediate risk analysis.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Detailed Reports</h3>
+                    <p>Get insights into factors affecting your loan eligibility.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>User-Friendly Interface</h3>
+                    <p>Simple and intuitive design for easy navigation.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
+
+

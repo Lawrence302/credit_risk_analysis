@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Collection Form</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
-</head>
-<body>
+
+{% extends 'base.html' %}
+    
+    
+
+    <!-- Form content -->
+{% block content %}
     <div class="container mt-4">
         <h1 class="mb-4">Data Collection Form</h1>
         <form id="dataForm" action="/submit" method="post">
@@ -95,7 +87,7 @@
             <p id="formError" class="error"></p>
         </form>
     </div>
-
+{% endblock %}
     <!-- Bootstrap JS and dependencies (optional but recommended for interactive components) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
@@ -150,5 +142,3 @@
             return /^-?\d+(\.\d+)?$/.test(value);
         }
     </script>
-</body>
-</html>

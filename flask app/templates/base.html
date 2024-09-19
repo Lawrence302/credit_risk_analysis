@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}"> <!-- Link to nav.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css')}}">
+    {% block head %}{% endblock %} <!-- Additional CSS files can be added here -->
+</head>
+<body>
+    <header>
+        <h1>Loan Risk Analysis App</h1>
+        {% include 'nav.html' %}  
+    </header>
+
+    <main>
+        <!-- Main content goes here -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Loan Risk Analysis. All rights reserved.</p>
+    </footer>
+</body>
+</html>

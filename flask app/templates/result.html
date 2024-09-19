@@ -1,0 +1,45 @@
+
+
+{% extends "base.html" %}
+
+{% block title %} Loan Analysis Result {% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+{% endblock %}
+
+{% block content %}
+   <div class="result-container">
+
+        <section class="data-section"></section>
+            <h2>Submitted Data</h2>
+            <div class="data-table">
+                {{ filled_data|safe }}  <!-- Second table for filled fields -->
+            </div>
+        </section>
+
+        <section class="data-section">
+            <h2>Transformed Data</h2>
+            <div class="data-table">
+                <pre>{{ data|safe }}</pre>
+            </div>
+        </section>
+
+      
+
+        <section class="prediction-section">
+            <h2>Prediction Details</h2>
+            <!-- <p><strong>Prediction Probability:</strong> {{ prediction }}</p> -->
+            
+            <p><strong>{{ risk_message }}</strong></p>
+            <p><strong>{{ no_risk_message }}</strong></p>
+            <p><strong>Risk Level:</strong> {{ risk_level }}</p>
+        </section>
+
+        
+        
+
+        <a class="back-button" href="/form">Go Back</a>
+    </div>
+{% endblock %}
+
+ 
