@@ -58,22 +58,40 @@ Credit_risk_analysis/
 
 ---
 
-## Usage
-
-1. Clone the repository:
+## How to Run the Flask App
+**First Clone the repository:**
    ```bash
    git clone https://github.com/Lawrence302/credit_risk_analysis.git
    cd credit_risk_analysis
   ```
-2. Install required packages
-```bash
-pip install -r requirements.txt
-```
-3. Run data preprocessing and exploratory data analysis from the notebooks.
+1. **Create a virtual environment (recommended)**
 
-4. Train models and evaluate their performance using the scripts in src/.
+   - On **Linux/macOS** terminal:
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
+   - On **Windows** Command Prompt:
+     ```cmd
+     python -m venv venv
+     venv\Scripts\activate
+     ```
 
-5. Optionally, deploy the final model using the Flask app (app.py).
+2. **Install dependencies**
+
+   If you have a `requirements.txt` file, run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run data preprocessing and exploratory data analysis from the notebooks.(credit_risk_analysis_sem_proj.ipynb)
+
+4. Train models and evaluate their performance using the (credit_risk_analysis_sem_proj.ipynb) in the root directory
+5. Download the model and replace it in the (models) folder
+
+6. To run the app, use the command
+   ```bash
+   python app.py
+   ```
 
 ## Results & Evaluation
 
